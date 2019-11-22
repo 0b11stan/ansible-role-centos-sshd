@@ -1,3 +1,14 @@
+- name: assert required variables are defined
+  assert:
+    that:
+      - "{{ item }} is defined"
+    fail_msg: "{{ item }} should be defined"
+    success_msg: "{{ item }} is defined"
+  loop:
+    - ssh_group
+    - ssh_port
+    - ssh_users
+
 - name: "{{ ssh_group }} group exists"
   become: true
   group:
