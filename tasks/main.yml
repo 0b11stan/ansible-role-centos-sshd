@@ -45,4 +45,5 @@
     ansible_port: "{{ ssh_port }}"
   when: sshd_config.changed
 
+# TODO: add an handler for reloading ssh
 # TODO: add iptable rule to allow "ssh_port"
