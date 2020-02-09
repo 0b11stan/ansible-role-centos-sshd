@@ -45,5 +45,12 @@
     ansible_port: "{{ ssh_port }}"
   when: sshd_config.changed
 
+- name: enable ssh port for selinux
+  seport:
+    ports: "{{ ssh_port }}"
+    proto: tcp
+    setype: ssh_port_t
+    state: present
+
 # TODO: add an handler for reloading ssh
 # TODO: add iptable rule to allow "ssh_port"
